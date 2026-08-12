@@ -75,7 +75,7 @@ export function Index() {
       <main>
         {/* Hero Section */}
         <section className="relative">
-          <div className="relative h-[68vh] min-h-[480px] w-full sm:h-[74vh] sm:min-h-[560px] lg:h-[80vh]">
+          <div className="relative h-[68vh] min-h-[480px] w-full sm:h-[74vh] sm:min-h-[560px] lg:h-[84vh] lg:min-h-[640px]">
             <img
               src={heroImage}
               alt="Contemporary architectural home with glass walls and reflecting pool at golden hour"
@@ -89,7 +89,7 @@ export function Index() {
 
             <div className="absolute inset-0">
               <div className="mx-auto flex h-full max-w-[1400px] items-center px-5 sm:px-8">
-                <div className="max-w-2xl pb-20 sm:pb-28">
+                <div className="max-w-2xl pb-20 sm:pb-28 lg:pb-36">
                   {/* Live Status Glass Pill Badge */}
                   <div className="inline-flex items-center gap-2 border border-panel/30 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-sans text-panel/90 mb-4 sm:mb-5 shadow-lg">
                     <span className="relative flex h-2 w-2">
@@ -101,25 +101,25 @@ export function Index() {
                     </span>
                   </div>
 
-                  <h1 className="font-serif text-[clamp(2.6rem,8.5vw,5.5rem)] font-light leading-[0.98] tracking-tight text-panel">
+                  <h1 className="font-serif text-[clamp(2.6rem,7.5vw,5.2rem)] font-light leading-[0.98] tracking-tight text-panel">
                     Find Your
-                    <span className="block font-serif italic font-normal text-amber-100/90 mt-1">
+                    <span className="block font-serif italic font-normal text-amber-100/90 mt-1 sm:mt-2">
                       Architectural Sanctuary
                     </span>
                   </h1>
 
                   <div className="mt-5 h-px w-14 bg-amber-200/50 sm:mt-7 sm:w-16" />
 
-                  <p className="mt-4 max-w-md font-serif text-[1.02rem] leading-relaxed text-panel/90 sm:mt-6 sm:text-lg">
+                  <p className="mt-4 max-w-md font-serif text-[1.02rem] leading-relaxed text-panel/90 sm:mt-6 sm:text-lg lg:text-xl lg:max-w-lg">
                     Curated modernist residences, waterfront compounds, and hillside sanctuaries designed for elevated living.
                   </p>
 
                   {/* Curated location tags */}
-                  <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 text-xs font-sans text-panel/80">
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Malibu</span>
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Aspen</span>
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Beverly Hills</span>
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Tribeca</span>
+                  <div className="mt-5 sm:mt-7 flex flex-wrap gap-2 text-xs font-sans text-panel/80">
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Malibu</span>
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Aspen</span>
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Beverly Hills</span>
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Tribeca</span>
                   </div>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export function Index() {
 
             {/* Floating Search Panel overlay inside Hero (Mobile & Desktop) */}
             <div className="absolute inset-x-0 bottom-0 translate-y-1/2 px-3 sm:px-6 md:px-8 z-20">
-              <div className="mx-auto max-w-[1180px]">
+              <div className="mx-auto max-w-[1240px]">
                 <SearchPanel
                   filters={filters}
                   onChange={setFilters}
@@ -141,7 +141,7 @@ export function Index() {
         </section>
 
         {/* Stats Strip */}
-        <section className="mt-20 md:mt-28 border-y border-border bg-panel py-8">
+        <section className="mt-20 md:mt-28 lg:mt-32 border-y border-border bg-panel py-8 sm:py-10">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8 grid grid-cols-2 gap-6 sm:grid-cols-4 font-sans text-center">
             <div>
               <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
