@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 import { Header } from "@/components/site/Header";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -80,10 +81,11 @@ function ContactPage() {
 
       <main className="mx-auto max-w-[1400px] px-5 pb-20 pt-10 sm:px-8 sm:pb-28 sm:pt-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-          <div>
-            <h1 className="font-serif text-[clamp(2.3rem,8vw,4rem)] font-light leading-[1.02] tracking-tight text-foreground">
-              Get in Touch
-            </h1>
+          <RevealOnScroll variant="slide-left" delay={100}>
+            <div>
+              <h1 className="font-serif text-[clamp(2.3rem,8vw,4rem)] font-light leading-[1.02] tracking-tight text-foreground">
+                Get in Touch
+              </h1>
             <div className="mt-7 h-px w-14 bg-foreground/25" />
             <p className="mt-6 max-w-md font-serif text-[1.1rem] leading-relaxed text-foreground/70 sm:text-[1.25rem]">
               Tell us what you are looking for. Our advisors arrange private viewings, quiet
@@ -107,7 +109,9 @@ function ContactPage() {
               </div>
             </dl>
           </div>
+        </RevealOnScroll>
 
+        <RevealOnScroll variant="fade-up" delay={250}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="border border-border p-6 sm:p-10">
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
@@ -190,8 +194,9 @@ function ContactPage() {
               {isSubmitting ? "Sending…" : "Send Message"}
             </button>
           </form>
-        </div>
-      </main>
+        </RevealOnScroll>
+      </div>
+    </main>
 
       <SiteFooter />
     </div>

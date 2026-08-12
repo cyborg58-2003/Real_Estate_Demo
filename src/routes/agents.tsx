@@ -5,6 +5,7 @@ import { toast } from "sonner";
 
 import { Header } from "@/components/site/Header";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import { AGENTS, type Agent } from "@/data/agents";
 import { PROPERTIES } from "@/data/properties";
 
@@ -54,40 +55,45 @@ function AgentsPage() {
 
       <main className="mx-auto max-w-[1400px] px-5 pb-24 pt-12 sm:px-8 sm:pt-16">
         {/* Header */}
-        <div className="max-w-2xl border-b border-border pb-8">
-          <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
-            Advisory Team
-          </span>
-          <h1 className="mt-2 font-serif text-[clamp(2.3rem,7vw,4rem)] font-light leading-[1.02] tracking-tight text-foreground">
-            Architectural Advisors
-          </h1>
-          <p className="mt-4 font-serif text-lg leading-relaxed text-foreground/70">
-            Our specialists possess deep technical knowledge in architectural history, structural design, and private real estate transactions.
-          </p>
-        </div>
+        <RevealOnScroll variant="slide-left" delay={100}>
+          <div className="max-w-2xl border-b border-border pb-8">
+            <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
+              Advisory Team
+            </span>
+            <h1 className="mt-2 font-serif text-[clamp(2.3rem,7vw,4rem)] font-light leading-[1.02] tracking-tight text-foreground">
+              Architectural Advisors
+            </h1>
+            <p className="mt-4 font-serif text-lg leading-relaxed text-foreground/70">
+              Our specialists possess deep technical knowledge in architectural history, structural design, and private real estate transactions.
+            </p>
+          </div>
+        </RevealOnScroll>
 
         {/* Stats Row */}
-        <div className="mt-10 grid grid-cols-2 gap-4 border-b border-border pb-10 sm:grid-cols-4 font-sans">
-          <div className="border border-border bg-panel p-5 text-center">
-            <span className="font-serif text-3xl font-light text-foreground">$1.15B+</span>
-            <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Transaction Volume</p>
+        <RevealOnScroll variant="fade-up" delay={200}>
+          <div className="mt-10 grid grid-cols-2 gap-4 border-b border-border pb-10 sm:grid-cols-4 font-sans">
+            <div className="border border-border bg-panel p-5 text-center">
+              <span className="font-serif text-3xl font-light text-foreground">$1.15B+</span>
+              <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Transaction Volume</p>
+            </div>
+            <div className="border border-border bg-panel p-5 text-center">
+              <span className="font-serif text-3xl font-light text-foreground">99.4%</span>
+              <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Client Satisfaction</p>
+            </div>
+            <div className="border border-border bg-panel p-5 text-center">
+              <span className="font-serif text-3xl font-light text-foreground">15+</span>
+              <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Design Awards</p>
+            </div>
+            <div className="border border-border bg-panel p-5 text-center">
+              <span className="font-serif text-3xl font-light text-foreground">4</span>
+              <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Regional Studios</p>
+            </div>
           </div>
-          <div className="border border-border bg-panel p-5 text-center">
-            <span className="font-serif text-3xl font-light text-foreground">99.4%</span>
-            <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Client Satisfaction</p>
-          </div>
-          <div className="border border-border bg-panel p-5 text-center">
-            <span className="font-serif text-3xl font-light text-foreground">15+</span>
-            <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Design Awards</p>
-          </div>
-          <div className="border border-border bg-panel p-5 text-center">
-            <span className="font-serif text-3xl font-light text-foreground">4</span>
-            <p className="mt-1 text-xs text-foreground/55 uppercase tracking-wider">Regional Studios</p>
-          </div>
-        </div>
+        </RevealOnScroll>
 
         {/* Agents Grid */}
-        <div className="mt-14 grid gap-10 md:grid-cols-2">
+        <RevealOnScroll variant="fade-up" delay={300}>
+          <div className="mt-14 grid gap-10 md:grid-cols-2">
           {AGENTS.map((agent) => {
             const agentListings = PROPERTIES.filter((p) => p.agentId === agent.id);
 
@@ -180,7 +186,8 @@ function AgentsPage() {
             );
           })}
         </div>
-      </main>
+      </RevealOnScroll>
+    </main>
 
       {/* Inquiry Modal */}
       {selectedAgent && (

@@ -9,6 +9,7 @@ import { PropertyCard } from "@/components/site/PropertyCard";
 import { ScheduleTourModal } from "@/components/site/ScheduleTourModal";
 import { MortgageCalculator } from "@/components/site/MortgageCalculator";
 import { ImageLightbox } from "@/components/site/ImageLightbox";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import { formatPrice, getProperty, specLine, PROPERTIES } from "@/data/properties";
 import { getAgent } from "@/data/agents";
 import { useSavedProperties } from "@/hooks/useSavedProperties";
@@ -126,63 +127,67 @@ function PropertyDetail() {
         </div>
 
         {/* Property Header */}
-        <header className="mt-7 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-7">
-          <div>
-            <div className="flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.18em] text-foreground/45">
-              <span className="font-semibold text-primary">{property.status}</span>
-              <span>·</span>
-              <span>{property.location}</span>
-              <span>·</span>
-              <span>{property.city}</span>
+        <RevealOnScroll variant="slide-left" delay={100}>
+          <header className="mt-7 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-7">
+            <div>
+              <div className="flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.18em] text-foreground/45">
+                <span className="font-semibold text-primary">{property.status}</span>
+                <span>·</span>
+                <span>{property.location}</span>
+                <span>·</span>
+                <span>{property.city}</span>
+              </div>
+              <h1 className="mt-2 font-serif text-[clamp(2.2rem,6.5vw,3.8rem)] font-light leading-[1.05] tracking-tight text-foreground">
+                {property.name}
+              </h1>
+              <p className="mt-1 font-serif text-base text-foreground/70 italic max-w-2xl">{property.tagline}</p>
             </div>
-            <h1 className="mt-2 font-serif text-[clamp(2.2rem,6.5vw,3.8rem)] font-light leading-[1.05] tracking-tight text-foreground">
-              {property.name}
-            </h1>
-            <p className="mt-1 font-serif text-base text-foreground/70 italic max-w-2xl">{property.tagline}</p>
-          </div>
 
-          <div className="text-right">
-            <p className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
-              {formatPrice(property.price)}
-            </p>
-            <p className="text-xs text-foreground/50 font-sans mt-0.5">
-              Est. ${Math.round(property.price * 0.0055).toLocaleString()}/mo mortgage
-            </p>
-          </div>
-        </header>
+            <div className="text-right">
+              <p className="font-serif text-3xl font-semibold text-foreground sm:text-4xl">
+                {formatPrice(property.price)}
+              </p>
+              <p className="text-xs text-foreground/50 font-sans mt-0.5">
+                Est. ${Math.round(property.price * 0.0055).toLocaleString()}/mo mortgage
+              </p>
+            </div>
+          </header>
+        </RevealOnScroll>
 
         {/* Gallery Grid */}
-        <div className="mt-8 relative group">
-          <div className="grid gap-3 sm:grid-cols-3">
-            <div className="sm:col-span-2 relative overflow-hidden cursor-pointer" onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}>
-              <img
-                src={property.gallery[0]}
-                alt={property.name}
-                className="aspect-[16/10] w-full object-cover transition-transform duration-500 hover:scale-[1.01]"
-              />
+        <RevealOnScroll variant="fade-up" delay={200}>
+          <div className="mt-8 relative group">
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="sm:col-span-2 relative overflow-hidden cursor-pointer" onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}>
+                <img
+                  src={property.gallery[0]}
+                  alt={property.name}
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 hover:scale-[1.01]"
+                />
+              </div>
+              <div className="grid gap-3">
+                {property.gallery.slice(1, 3).map((img, idx) => (
+                  <div key={img + idx} className="relative overflow-hidden cursor-pointer" onClick={() => { setLightboxIndex(idx + 1); setLightboxOpen(true); }}>
+                    <img
+                      src={img}
+                      alt={`${property.name} view ${idx + 2}`}
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-3">
-              {property.gallery.slice(1, 3).map((img, idx) => (
-                <div key={img + idx} className="relative overflow-hidden cursor-pointer" onClick={() => { setLightboxIndex(idx + 1); setLightboxOpen(true); }}>
-                  <img
-                    src={img}
-                    alt={`${property.name} view ${idx + 2}`}
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-[1.02]"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
 
-          <button
-            type="button"
-            onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
-            className="absolute bottom-4 right-4 flex items-center gap-2 bg-background/90 border border-border px-4 py-2 font-sans text-xs text-foreground backdrop-blur-xs hover:bg-background transition-colors"
-          >
-            <Maximize2 className="h-4 w-4" />
-            <span>View All Photos ({property.gallery.length})</span>
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
+              className="absolute bottom-4 right-4 flex items-center gap-2 bg-background/90 border border-border px-4 py-2 font-sans text-xs text-foreground backdrop-blur-xs hover:bg-background transition-colors"
+            >
+              <Maximize2 className="h-4 w-4" />
+              <span>View All Photos ({property.gallery.length})</span>
+            </button>
+          </div>
+        </RevealOnScroll>
 
         {/* Main Content Layout */}
         <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">

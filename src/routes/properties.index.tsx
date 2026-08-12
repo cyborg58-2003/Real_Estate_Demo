@@ -6,6 +6,7 @@ import { Header } from "@/components/site/Header";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { PropertyCard } from "@/components/site/PropertyCard";
 import { MobileGridToggle } from "@/components/site/MobileGridToggle";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import { PropertyMap } from "@/components/site/PropertyMap";
 import { PropertyCompare } from "@/components/site/PropertyCompare";
 import { SearchPanel, EMPTY_FILTERS, type Filters } from "@/components/site/SearchPanel";
@@ -74,22 +75,26 @@ function PropertiesCatalog() {
 
       <main className="mx-auto max-w-[1400px] px-5 pb-24 pt-10 sm:px-8 sm:pt-12">
         {/* Page Title Header */}
-        <div className="border-b border-border pb-8">
-          <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
-            Curated Directory
-          </span>
-          <h1 className="mt-2 font-serif text-[clamp(2.2rem,6vw,3.8rem)] font-light leading-[1.05] tracking-tight text-foreground">
-            Architectural Residences
-          </h1>
-          <p className="mt-3 max-w-xl font-serif text-base text-foreground/70 sm:text-lg">
-            Discover minimalist homes, waterfront compounds, and desert modern sanctuaries curated by our design team.
-          </p>
-        </div>
+        <RevealOnScroll variant="slide-left" delay={100}>
+          <div className="border-b border-border pb-8">
+            <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
+              Curated Directory
+            </span>
+            <h1 className="mt-2 font-serif text-[clamp(2.2rem,6vw,3.8rem)] font-light leading-[1.05] tracking-tight text-foreground">
+              Architectural Residences
+            </h1>
+            <p className="mt-3 max-w-xl font-serif text-base text-foreground/70 sm:text-lg">
+              Discover minimalist homes, waterfront compounds, and desert modern sanctuaries curated by our design team.
+            </p>
+          </div>
+        </RevealOnScroll>
 
         {/* Search & Filter Bar */}
-        <div className="mt-8">
-          <SearchPanel filters={filters} onChange={setFilters} onSearch={() => {}} />
-        </div>
+        <RevealOnScroll variant="fade-up" delay={200}>
+          <div className="mt-8">
+            <SearchPanel filters={filters} onChange={setFilters} onSearch={() => {}} />
+          </div>
+        </RevealOnScroll>
 
         {/* Controls Bar */}
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-b border-border pb-5">

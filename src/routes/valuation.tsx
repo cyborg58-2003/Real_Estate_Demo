@@ -8,6 +8,7 @@ import { CheckCircle2, Home, Sparkles, Building, ArrowRight } from "lucide-react
 
 import { Header } from "@/components/site/Header";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 
 export const Route = createFileRoute("/valuation")({
   head: () => ({
@@ -94,10 +95,11 @@ function ValuationPage() {
       <main className="mx-auto max-w-[1400px] px-5 pb-24 pt-12 sm:px-8 sm:pt-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           {/* Left Text Column */}
-          <div>
-            <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45 font-semibold">
-              Sell With Homestead
-            </span>
+          <RevealOnScroll variant="slide-left" delay={100}>
+            <div>
+              <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45 font-semibold">
+                Sell With Homestead
+              </span>
             <h1 className="mt-3 font-serif text-[clamp(2.3rem,7vw,4rem)] font-light leading-[1.02] tracking-tight text-foreground">
               Confidential Home Valuation & Advisory
             </h1>
@@ -125,11 +127,13 @@ function ValuationPage() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          </RevealOnScroll>
 
           {/* Right Form Column */}
-          <div>
-            {submitted ? (
+          <RevealOnScroll variant="fade-up" delay={250}>
+            <div>
+              {submitted ? (
               <div className="border border-border bg-panel p-10 text-center">
                 <CheckCircle2 className="mx-auto h-14 w-14 text-emerald-600" strokeWidth={1.2} />
                 <h3 className="mt-4 font-serif text-3xl text-foreground font-light">Valuation Requested</h3>
@@ -307,8 +311,9 @@ function ValuationPage() {
               </form>
             )}
           </div>
-        </div>
-      </main>
+        </RevealOnScroll>
+      </div>
+    </main>
 
       <SiteFooter />
     </div>
