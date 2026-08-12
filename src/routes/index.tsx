@@ -1,5 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass, ShieldCheck, Award, Sparkles, Building2, Layers, Square, Columns2 } from "lucide-react";
+import {
+  ArrowRight,
+  Compass,
+  ShieldCheck,
+  Award,
+  Sparkles,
+  Building2,
+  Layers,
+  Square,
+  Columns2,
+} from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 
 import { Header } from "@/components/site/Header";
@@ -55,7 +65,7 @@ export function Index() {
   }, [filters]);
 
   const isFiltered = Boolean(
-    filters.searchQuery || filters.location || filters.type || filters.price
+    filters.searchQuery || filters.location || filters.type || filters.price,
   );
 
   return (
@@ -88,14 +98,15 @@ export function Index() {
                   </h1>
                   <div className="mt-6 h-px w-14 bg-panel/70 sm:mt-8 sm:w-16" />
                   <p className="mt-5 max-w-sm font-serif text-[1.02rem] leading-relaxed text-panel/90 sm:mt-7 sm:text-lg">
-                    Curated modernist residences, waterfront compounds, and hillside sanctuaries designed for living.
+                    Curated modernist residences, waterfront compounds, and hillside sanctuaries
+                    designed for living.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Floating Search Panel overlay inside Hero (Mobile & Desktop) */}
-            <div className="absolute inset-x-0 bottom-12 sm:bottom-16 md:bottom-10 px-3 sm:px-6 md:px-8 z-20">
+            <div className="absolute inset-x-0 bottom-6 sm:bottom-8 md:bottom-2 md:translate-y-1/4 px-3 sm:px-6 md:px-8 z-20">
               <div className="mx-auto max-w-[1180px]">
                 <SearchPanel
                   filters={filters}
@@ -110,23 +121,37 @@ export function Index() {
         </section>
 
         {/* Stats Strip */}
-        <section className="mt-8 sm:mt-12 border-y border-border bg-panel py-8">
+        <section className="mt-12 sm:mt-16 md:mt-20 border-y border-border bg-panel py-8">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8 grid grid-cols-2 gap-6 sm:grid-cols-4 font-sans text-center">
             <div>
-              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">$1.15B+</span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">Transactions</p>
+              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
+                $1.15B+
+              </span>
+              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                Transactions
+              </p>
             </div>
             <div>
-              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">100%</span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">Vetted Architecture</p>
+              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
+                100%
+              </span>
+              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                Vetted Architecture
+              </p>
             </div>
             <div>
-              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">99.4%</span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">Client Satisfaction</p>
+              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
+                99.4%
+              </span>
+              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                Client Satisfaction
+              </p>
             </div>
             <div>
               <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">4</span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">Regional Studios</p>
+              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                Regional Studios
+              </p>
             </div>
           </div>
         </section>
@@ -163,14 +188,17 @@ export function Index() {
           </div>
 
           {results.length > 0 ? (
-            <div className={`mt-9 grid ${mobileCols === 2 ? "grid-cols-2 gap-3" : "grid-cols-1 gap-7"} sm:grid-cols-2 sm:gap-8 lg:grid-cols-3`}>
+            <div
+              className={`mt-9 grid ${mobileCols === 2 ? "grid-cols-2 gap-3" : "grid-cols-1 gap-7"} sm:grid-cols-2 sm:gap-8 lg:grid-cols-3`}
+            >
               {results.slice(0, 6).map((property) => (
                 <PropertyCard key={property.slug} property={property} />
               ))}
             </div>
           ) : (
             <div className="mt-10 border border-border px-6 py-12 text-center font-serif text-lg text-foreground/60">
-              No properties match this search filter. Try clearing your filters or selecting a different location.
+              No properties match this search filter. Try clearing your filters or selecting a
+              different location.
             </div>
           )}
         </section>
@@ -188,7 +216,10 @@ export function Index() {
             </div>
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <Link to="/properties" className="group relative overflow-hidden border border-border aspect-[4/5] block">
+              <Link
+                to="/properties"
+                className="group relative overflow-hidden border border-border aspect-[4/5] block"
+              >
                 <img
                   src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
                   alt="Coastal Waterfront"
@@ -196,12 +227,17 @@ export function Index() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                 <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">Environment</span>
+                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                    Environment
+                  </span>
                   <h3 className="font-serif text-2xl font-light">Waterfront Compounds</h3>
                 </div>
               </Link>
 
-              <Link to="/properties" className="group relative overflow-hidden border border-border aspect-[4/5] block">
+              <Link
+                to="/properties"
+                className="group relative overflow-hidden border border-border aspect-[4/5] block"
+              >
                 <img
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
                   alt="Desert Modernism"
@@ -209,12 +245,17 @@ export function Index() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                 <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">Environment</span>
+                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                    Environment
+                  </span>
                   <h3 className="font-serif text-2xl font-light">Desert Modernism</h3>
                 </div>
               </Link>
 
-              <Link to="/properties" className="group relative overflow-hidden border border-border aspect-[4/5] block">
+              <Link
+                to="/properties"
+                className="group relative overflow-hidden border border-border aspect-[4/5] block"
+              >
                 <img
                   src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"
                   alt="Alpine Retreats"
@@ -222,12 +263,17 @@ export function Index() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                 <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">Environment</span>
+                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                    Environment
+                  </span>
                   <h3 className="font-serif text-2xl font-light">Alpine Retreats</h3>
                 </div>
               </Link>
 
-              <Link to="/properties" className="group relative overflow-hidden border border-border aspect-[4/5] block">
+              <Link
+                to="/properties"
+                className="group relative overflow-hidden border border-border aspect-[4/5] block"
+              >
                 <img
                   src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
                   alt="Urban Penthouses"
@@ -235,7 +281,9 @@ export function Index() {
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                 <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">Environment</span>
+                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                    Environment
+                  </span>
                   <h3 className="font-serif text-2xl font-light">Sky Penthouses</h3>
                 </div>
               </Link>
@@ -254,7 +302,8 @@ export function Index() {
                 Considering Selling Your Property?
               </h2>
               <p className="mt-3 font-serif text-base text-foreground/75 leading-relaxed">
-                Our advisors provide confidential architectural valuations, off-market introductions, and global collector outreach.
+                Our advisors provide confidential architectural valuations, off-market
+                introductions, and global collector outreach.
               </p>
             </div>
 
