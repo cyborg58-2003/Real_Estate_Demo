@@ -119,12 +119,32 @@ function CustomSelect({
 }
 
 export function SearchPanel({ filters, onChange, onSearch }: Props) {
+  const [activeTab, setActiveTab] = useState<"buy" | "rent" | "off-market">("buy");
+
   const isFiltered = Boolean(
     filters.searchQuery || filters.location || filters.type || filters.price
   );
 
   return (
-    <div className="bg-panel/95 backdrop-blur-md border border-border/80 p-3 sm:p-4 shadow-[0_20px_50px_-20px_rgba(20,16,12,0.5)] w-full">
+    <div className="bg-panel/95 backdrop-blur-md border border-border/80 p-3.5 sm:p-5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.4)] w-full">
+      {/* Category Tabs Header */}
+      <div className="flex items-center gap-1 mb-2.5 sm:mb-3">
+        {(["buy", "rent", "off-market"] as const).map((tab) => (
+          <button
+            key={tab}
+            type="button"
+            onClick={() => setActiveTab(tab)}
+            className={`px-3 py-1 font-sans text-[0.68rem] sm:text-xs uppercase tracking-wider transition-all ${
+              activeTab === tab
+                ? "bg-primary text-primary-foreground font-medium shadow-xs"
+                : "text-foreground/60 hover:text-foreground hover:bg-background/60"
+            }`}
+          >
+            {tab === "buy" ? "Buy" : tab === "rent" ? "Rent" : "Off-Market"}
+          </button>
+        ))}
+      </div>
+
       {/* Divided Grid on Mobile (2 columns), 1 Line Horizontal Bar on Desktop */}
       <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:items-center md:gap-2.5 w-full">
         {/* Search Query Input - Full width on Mobile top row */}

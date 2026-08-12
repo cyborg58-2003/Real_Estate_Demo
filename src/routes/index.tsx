@@ -75,7 +75,7 @@ export function Index() {
       <main>
         {/* Hero Section */}
         <section className="relative">
-          <div className="relative h-[65vh] min-h-[460px] w-full sm:h-[72vh] sm:min-h-[540px] lg:h-[78vh]">
+          <div className="relative h-[68vh] min-h-[480px] w-full sm:h-[74vh] sm:min-h-[560px] lg:h-[80vh]">
             <img
               src={heroImage}
               alt="Contemporary architectural home with glass walls and reflecting pool at golden hour"
@@ -83,24 +83,44 @@ export function Index() {
               height={1088}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,16,12,0.76)_0%,rgba(20,16,12,0.40)_55%,rgba(20,16,12,0.15)_100%)]" />
+            {/* Dual gradient overlay for crisp readability & rich warm depth */}
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,12,9,0.85)_0%,rgba(15,12,9,0.50)_55%,rgba(15,12,9,0.20)_100%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,0,0,0.6),transparent_75%)]" />
 
             <div className="absolute inset-0">
               <div className="mx-auto flex h-full max-w-[1400px] items-center px-5 sm:px-8">
-                <div className="max-w-xl pb-16 sm:pb-24">
-                  <span className="font-sans text-[0.72rem] uppercase tracking-[0.25em] text-panel/80 font-medium">
-                    Private Real Estate Advisory
-                  </span>
-                  <h1 className="mt-2 font-serif text-[clamp(2.5rem,9.5vw,5.2rem)] font-light leading-[1] tracking-[-0.01em] text-panel sm:leading-[0.98]">
+                <div className="max-w-2xl pb-20 sm:pb-28">
+                  {/* Live Status Glass Pill Badge */}
+                  <div className="inline-flex items-center gap-2 border border-panel/30 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-sans text-panel/90 mb-4 sm:mb-5 shadow-lg">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span className="uppercase tracking-[0.22em] font-medium text-[0.65rem] sm:text-[0.68rem]">
+                      Private Architectural Advisory
+                    </span>
+                  </div>
+
+                  <h1 className="font-serif text-[clamp(2.6rem,8.5vw,5.5rem)] font-light leading-[0.98] tracking-tight text-panel">
                     Find Your
-                    <br />
-                    Architectural Home
+                    <span className="block font-serif italic font-normal text-amber-100/90 mt-1">
+                      Architectural Sanctuary
+                    </span>
                   </h1>
-                  <div className="mt-6 h-px w-14 bg-panel/70 sm:mt-8 sm:w-16" />
-                  <p className="mt-5 max-w-sm font-serif text-[1.02rem] leading-relaxed text-panel/90 sm:mt-7 sm:text-lg">
-                    Curated modernist residences, waterfront compounds, and hillside sanctuaries
-                    designed for living.
+
+                  <div className="mt-5 h-px w-14 bg-amber-200/50 sm:mt-7 sm:w-16" />
+
+                  <p className="mt-4 max-w-md font-serif text-[1.02rem] leading-relaxed text-panel/90 sm:mt-6 sm:text-lg">
+                    Curated modernist residences, waterfront compounds, and hillside sanctuaries designed for elevated living.
                   </p>
+
+                  {/* Curated location tags */}
+                  <div className="mt-5 sm:mt-6 flex flex-wrap gap-2 text-xs font-sans text-panel/80">
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Malibu</span>
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Aspen</span>
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Beverly Hills</span>
+                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-2.5 py-1 tracking-wider text-[0.7rem] uppercase">📍 Tribeca</span>
+                  </div>
                 </div>
               </div>
             </div>
