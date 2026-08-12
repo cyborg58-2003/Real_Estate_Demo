@@ -18,9 +18,9 @@ export function Header() {
   const currentPath = routerState.location.pathname;
 
   return (
-    <header className="w-full bg-background border-b border-border/60 sticky top-0 z-40 backdrop-blur-md bg-background/95">
+    <header className="w-full bg-background border-b border-border/60 sticky top-0 z-40 backdrop-blur-md bg-background/95 transition-all duration-300">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-4 sm:px-8 sm:py-4">
-        {/* Brand Logo */}
+        {/* Brand Logo with micro hover scale */}
         <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
           <svg
             width="26"
@@ -29,7 +29,7 @@ export function Header() {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.2"
-            className="text-foreground transition-transform group-hover:scale-105"
+            className="text-foreground transition-transform duration-300 group-hover:scale-110"
             aria-hidden="true"
           >
             <path d="M3 11.5 12 4l9 7.5V21H3z" />
@@ -45,7 +45,7 @@ export function Header() {
           </div>
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav with Animated Underline */}
         <nav className="hidden items-center gap-7 lg:gap-9 md:flex">
           {NAV.map((item) => {
             const isActive = currentPath === item.to;
@@ -53,14 +53,16 @@ export function Header() {
               <Link
                 key={item.label}
                 to={item.to}
-                className={`font-sans text-[0.88rem] transition-colors relative py-1 ${
+                className={`font-sans text-[0.88rem] transition-all duration-200 relative py-1 group/nav ${
                   isActive ? "text-foreground font-medium" : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 {item.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full" />
-                )}
+                <span
+                  className={`absolute bottom-0 left-0 right-0 h-0.5 bg-foreground transition-all duration-300 ease-out origin-left ${
+                    isActive ? "scale-x-100" : "scale-x-0 group-hover/nav:scale-x-100"
+                  }`}
+                />
               </Link>
             );
           })}
@@ -68,16 +70,16 @@ export function Header() {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-3 sm:gap-4">
-          {/* Saved Homes Badge */}
+          {/* Saved Homes Badge with pulse */}
           <Link
             to="/saved"
-            className="flex items-center gap-1.5 border border-border px-3 py-2 text-xs font-sans text-foreground/80 hover:text-foreground hover:border-foreground/40 transition-colors"
+            className="flex items-center gap-1.5 border border-border px-3 py-2 text-xs font-sans text-foreground/80 hover:text-foreground hover:border-foreground/40 transition-all duration-200 active:scale-95"
             title="View saved homes"
           >
-            <Bookmark className="h-4 w-4 text-primary" />
+            <Bookmark className="h-4 w-4 text-primary transition-transform duration-200 hover:scale-110" />
             <span className="hidden sm:inline">Saved</span>
             {savedCount > 0 && (
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[0.7rem] font-semibold text-primary-foreground">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[0.7rem] font-semibold text-primary-foreground animate-scale-up">
                 {savedCount}
               </span>
             )}
@@ -85,7 +87,7 @@ export function Header() {
 
           <Link
             to="/contact"
-            className="hidden sm:inline-block bg-primary px-5 py-2.5 font-sans text-[0.82rem] text-primary-foreground transition-opacity hover:opacity-90"
+            className="hidden sm:inline-block bg-primary px-5 py-2.5 font-sans text-[0.82rem] text-primary-foreground transition-all duration-200 hover:opacity-90 hover:shadow-md active:scale-95"
           >
             Get in Touch
           </Link>
@@ -94,17 +96,17 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-foreground p-1"
+            className="md:hidden text-foreground p-1 transition-transform duration-200 active:scale-90"
             aria-label="Toggle Navigation Menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <X className="h-6 w-6 animate-scale-up" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-panel px-5 py-6 space-y-4 animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden border-t border-border bg-panel px-5 py-6 space-y-4 animate-in slide-in-from-top-3 fade-in duration-200">
           <nav className="flex flex-col space-y-3 font-sans text-base">
             {NAV.map((item) => (
               <Link
@@ -131,7 +133,7 @@ export function Header() {
             <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 block w-full text-center bg-primary py-3 font-sans text-sm text-primary-foreground"
+              className="mt-2 block w-full text-center bg-primary py-3 font-sans text-sm text-primary-foreground active:scale-98 transition-transform"
             >
               Get in Touch
             </Link>
