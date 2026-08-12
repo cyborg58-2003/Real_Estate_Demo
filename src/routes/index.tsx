@@ -95,7 +95,7 @@ export function Index() {
             </div>
 
             {/* Floating Search Panel overlay inside Hero (Mobile & Desktop) */}
-            <div className="absolute inset-x-0 bottom-5 sm:bottom-8 md:bottom-0 md:translate-y-1/3 px-3 sm:px-6 md:px-8 z-20">
+            <div className="absolute inset-x-0 bottom-12 sm:bottom-16 md:bottom-10 px-3 sm:px-6 md:px-8 z-20">
               <div className="mx-auto max-w-[1180px]">
                 <SearchPanel
                   filters={filters}
@@ -110,7 +110,7 @@ export function Index() {
         </section>
 
         {/* Stats Strip */}
-        <section className="mt-14 sm:mt-20 md:mt-24 border-y border-border bg-panel py-8">
+        <section className="mt-8 sm:mt-12 border-y border-border bg-panel py-8">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8 grid grid-cols-2 gap-6 sm:grid-cols-4 font-sans text-center">
             <div>
               <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">$1.15B+</span>
