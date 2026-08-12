@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { X, Calendar, Clock, Video, UserCheck, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import type { Property } from "@/data/properties";
@@ -9,13 +10,18 @@ type Props = {
   onClose: () => void;
 };
 
+const getFormattedDate = (offsetDays = 0) => {
+  const d = new Date();
+  d.setDate(d.getDate() + offsetDays);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 export function ScheduleTourModal({ property, isOpen, onClose }: Props) {
   const [tourType, setTourType] = useState<"in-person" | "video">("in-person");
-  const [date, setDate] = useState<string>(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d.toISOString().split("T")[0];
-  });
+  const [date, setDate] = useState<string>(() => getFormattedDate(1));
   const [timeSlot, setTimeSlot] = useState("10:00 AM");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +30,7 @@ export function ScheduleTourModal({ property, isOpen, onClose }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  if (!isOpen) return null;
+  if (!isOpen || typeof document === "undefined") return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,9 +60,9 @@ export function ScheduleTourModal({ property, isOpen, onClose }: Props) {
     onClose();
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto border border-border bg-panel p-6 shadow-2xl sm:p-8">
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs transition-opacity duration-200 animate-in fade-in-0">
+      <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto no-scrollbar border border-border bg-panel p-6 shadow-2xl sm:p-8 transition-all duration-300 animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4">
         <button
           type="button"
           onClick={handleResetAndClose}
@@ -143,7 +149,7 @@ export function ScheduleTourModal({ property, isOpen, onClose }: Props) {
                       id="tour-date"
                       type="date"
                       value={date}
-                      min={new Date().toISOString().split("T")[0]}
+                      min={getFormattedDate(0)}
                       onChange={(e) => setDate(e.target.value)}
                       className="w-full border border-border bg-background px-3 py-2.5 font-sans text-[0.85rem] text-foreground outline-none focus:border-foreground/40"
                       required
@@ -240,6 +246,7 @@ export function ScheduleTourModal({ property, isOpen, onClose }: Props) {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

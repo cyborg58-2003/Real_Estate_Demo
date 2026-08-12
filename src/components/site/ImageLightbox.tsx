@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 type Props = {
@@ -33,7 +34,7 @@ export function ImageLightbox({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, currentIndex, images.length, onClose, onSelectIndex]);
 
-  if (!isOpen || images.length === 0) return null;
+  if (!isOpen || images.length === 0 || typeof document === "undefined") return null;
 
   const handlePrev = () => {
     onSelectIndex((currentIndex - 1 + images.length) % images.length);
@@ -43,8 +44,8 @@ export function ImageLightbox({
     onSelectIndex((currentIndex + 1) % images.length);
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-in fade-in duration-200">
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md transition-opacity duration-200 animate-in fade-in-0">
       {/* Top bar */}
       <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white/80 font-sans text-sm z-10">
         <span>
@@ -106,6 +107,7 @@ export function ImageLightbox({
           </button>
         ))}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

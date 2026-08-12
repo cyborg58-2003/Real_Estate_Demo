@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Phone, Mail, Award, CheckCircle2, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
@@ -190,9 +191,9 @@ function AgentsPage() {
     </main>
 
       {/* Inquiry Modal */}
-      {selectedAgent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="relative w-full max-w-md border border-border bg-panel p-6 shadow-2xl">
+      {selectedAgent && typeof document !== "undefined" && createPortal(
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs transition-opacity duration-200 animate-in fade-in-0">
+          <div className="relative w-full max-w-md border border-border bg-panel p-6 shadow-2xl transition-all duration-300 animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4">
             <h3 className="font-serif text-2xl text-foreground">Inquire with {selectedAgent.name}</h3>
             <p className="mt-1 text-xs text-foreground/60 font-sans">{selectedAgent.title}</p>
 
@@ -247,7 +248,8 @@ function AgentsPage() {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <SiteFooter />

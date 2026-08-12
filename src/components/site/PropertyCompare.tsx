@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { X, Check, Trash2 } from "lucide-react";
 import { formatPrice, type Property } from "@/data/properties";
@@ -10,11 +11,11 @@ type Props = {
 };
 
 export function PropertyCompare({ properties, isOpen, onClose, onRemove }: Props) {
-  if (!isOpen) return null;
+  if (!isOpen || typeof document === "undefined") return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-y-auto border border-border bg-panel p-6 shadow-2xl sm:p-8">
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs transition-opacity duration-200 animate-in fade-in-0">
+      <div className="relative max-h-[90vh] w-full max-w-5xl overflow-y-auto no-scrollbar border border-border bg-panel p-6 shadow-2xl sm:p-8 transition-all duration-300 animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-4">
         <div className="flex items-center justify-between border-b border-border pb-4">
           <div>
             <span className="font-sans text-[0.7rem] uppercase tracking-[0.18em] text-foreground/45">
@@ -151,6 +152,7 @@ export function PropertyCompare({ properties, isOpen, onClose, onRemove }: Props
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
