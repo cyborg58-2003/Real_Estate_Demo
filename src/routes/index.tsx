@@ -17,6 +17,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { SearchPanel, EMPTY_FILTERS, type Filters } from "@/components/site/SearchPanel";
 import { PropertyCard } from "@/components/site/PropertyCard";
 import { MobileGridToggle } from "@/components/site/MobileGridToggle";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import { PROPERTIES, PRICE_RANGES } from "@/data/properties";
 import heroImage from "@/assets/hero.jpg";
 
@@ -90,37 +91,45 @@ export function Index() {
             <div className="absolute inset-0">
               <div className="mx-auto flex h-full max-w-[1400px] items-center px-5 sm:px-8">
                 <div className="max-w-2xl pb-20 sm:pb-28 lg:pb-36">
-                  {/* Live Status Glass Pill Badge */}
-                  <div className="inline-flex items-center gap-2 border border-panel/30 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-sans text-panel/90 mb-4 sm:mb-5 shadow-lg">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span className="uppercase tracking-[0.22em] font-medium text-[0.65rem] sm:text-[0.68rem]">
-                      Private Architectural Advisory
-                    </span>
-                  </div>
+                  <RevealOnScroll variant="slide-left" delay={100}>
+                    {/* Live Status Glass Pill Badge */}
+                    <div className="inline-flex items-center gap-2 border border-panel/30 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-sans text-panel/90 mb-4 sm:mb-5 shadow-lg">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                      </span>
+                      <span className="uppercase tracking-[0.22em] font-medium text-[0.65rem] sm:text-[0.68rem]">
+                        Private Architectural Advisory
+                      </span>
+                    </div>
+                  </RevealOnScroll>
 
-                  <h1 className="font-serif text-[clamp(2.6rem,7.5vw,5.2rem)] font-light leading-[0.98] tracking-tight text-panel">
-                    Find Your
-                    <span className="block font-serif italic font-normal text-amber-100/90 mt-1 sm:mt-2">
-                      Architectural Sanctuary
-                    </span>
-                  </h1>
+                  <RevealOnScroll variant="slide-left" delay={250}>
+                    <h1 className="font-serif text-[clamp(2.6rem,7.5vw,5.2rem)] font-light leading-[0.98] tracking-tight text-panel">
+                      Find Your
+                      <span className="block font-serif italic font-normal text-amber-100/90 mt-1 sm:mt-2">
+                        Architectural Sanctuary
+                      </span>
+                    </h1>
+                  </RevealOnScroll>
 
-                  <div className="mt-5 h-px w-14 bg-amber-200/50 sm:mt-7 sm:w-16" />
+                  <RevealOnScroll variant="slide-left" delay={400}>
+                    <div className="mt-5 h-px w-14 bg-amber-200/50 sm:mt-7 sm:w-16" />
 
-                  <p className="mt-4 max-w-md font-serif text-[1.02rem] leading-relaxed text-panel/90 sm:mt-6 sm:text-lg lg:text-xl lg:max-w-lg">
-                    Curated modernist residences, waterfront compounds, and hillside sanctuaries designed for elevated living.
-                  </p>
+                    <p className="mt-4 max-w-md font-serif text-[1.02rem] leading-relaxed text-panel/90 sm:mt-6 sm:text-lg lg:text-xl lg:max-w-lg">
+                      Curated modernist residences, waterfront compounds, and hillside sanctuaries designed for elevated living.
+                    </p>
+                  </RevealOnScroll>
 
-                  {/* Curated location tags */}
-                  <div className="mt-5 sm:mt-7 flex flex-wrap gap-2 text-xs font-sans text-panel/80">
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Malibu</span>
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Aspen</span>
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Beverly Hills</span>
-                    <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Tribeca</span>
-                  </div>
+                  <RevealOnScroll variant="slide-left" delay={550}>
+                    {/* Curated location tags */}
+                    <div className="mt-5 sm:mt-7 flex flex-wrap gap-2 text-xs font-sans text-panel/80">
+                      <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Malibu</span>
+                      <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Aspen</span>
+                      <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Beverly Hills</span>
+                      <span className="border border-panel/20 bg-black/35 backdrop-blur-xs px-3 py-1 tracking-wider text-[0.7rem] uppercase">📍 Tribeca</span>
+                    </div>
+                  </RevealOnScroll>
                 </div>
               </div>
             </div>
@@ -128,13 +137,15 @@ export function Index() {
             {/* Floating Search Panel overlay inside Hero (Mobile & Desktop) */}
             <div className="absolute inset-x-0 bottom-0 translate-y-1/2 px-3 sm:px-6 md:px-8 z-20">
               <div className="mx-auto max-w-[1240px]">
-                <SearchPanel
-                  filters={filters}
-                  onChange={setFilters}
-                  onSearch={() =>
-                    resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
-                  }
-                />
+                <RevealOnScroll variant="fade-up" delay={650}>
+                  <SearchPanel
+                    filters={filters}
+                    onChange={setFilters}
+                    onSearch={() =>
+                      resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+                    }
+                  />
+                </RevealOnScroll>
               </div>
             </div>
           </div>
@@ -142,38 +153,40 @@ export function Index() {
 
         {/* Stats Strip */}
         <section className="mt-20 md:mt-28 lg:mt-32 border-y border-border bg-panel py-8 sm:py-10">
-          <div className="mx-auto max-w-[1400px] px-5 sm:px-8 grid grid-cols-2 gap-6 sm:grid-cols-4 font-sans text-center">
-            <div>
-              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
-                $1.15B+
-              </span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
-                Transactions
-              </p>
+          <RevealOnScroll variant="fade-up" delay={100}>
+            <div className="mx-auto max-w-[1400px] px-5 sm:px-8 grid grid-cols-2 gap-6 sm:grid-cols-4 font-sans text-center">
+              <div>
+                <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
+                  $1.15B+
+                </span>
+                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                  Transactions
+                </p>
+              </div>
+              <div>
+                <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
+                  100%
+                </span>
+                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                  Vetted Architecture
+                </p>
+              </div>
+              <div>
+                <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
+                  99.4%
+                </span>
+                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                  Client Satisfaction
+                </p>
+              </div>
+              <div>
+                <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">4</span>
+                <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
+                  Regional Studios
+                </p>
+              </div>
             </div>
-            <div>
-              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
-                100%
-              </span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
-                Vetted Architecture
-              </p>
-            </div>
-            <div>
-              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">
-                99.4%
-              </span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
-                Client Satisfaction
-              </p>
-            </div>
-            <div>
-              <span className="font-serif text-3xl sm:text-4xl text-foreground font-light">4</span>
-              <p className="text-[0.7rem] uppercase tracking-[0.16em] text-foreground/50 mt-1">
-                Regional Studios
-              </p>
-            </div>
-          </div>
+          </RevealOnScroll>
         </section>
 
         {/* Featured Listings Section */}
@@ -181,40 +194,44 @@ export function Index() {
           ref={resultsRef}
           className="mx-auto max-w-[1400px] scroll-mt-8 px-5 pb-20 pt-16 sm:px-8 sm:pb-28"
         >
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
-                Curated Collection
-              </span>
-              <h2 className="mt-1 font-serif text-[clamp(1.85rem,6vw,2.9rem)] font-light tracking-tight text-foreground">
-                {isFiltered ? "Matching Properties" : "Featured Residences"}
-              </h2>
-            </div>
+          <RevealOnScroll variant="fade-up" delay={100}>
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
+                  Curated Collection
+                </span>
+                <h2 className="mt-1 font-serif text-[clamp(1.85rem,6vw,2.9rem)] font-light tracking-tight text-foreground">
+                  {isFiltered ? "Matching Properties" : "Featured Residences"}
+                </h2>
+              </div>
 
-            <div className="flex items-center gap-3">
-              <MobileGridToggle cols={mobileCols} onChange={setMobileCols} />
+              <div className="flex items-center gap-3">
+                <MobileGridToggle cols={mobileCols} onChange={setMobileCols} />
 
-              <Link
-                to="/properties"
-                className="group flex items-center gap-2 font-sans text-[0.85rem] text-foreground/70 transition-colors hover:text-foreground"
-              >
-                <span>View All ({PROPERTIES.length})</span>
-                <ArrowRight
-                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                  strokeWidth={1.4}
-                />
-              </Link>
+                <Link
+                  to="/properties"
+                  className="group flex items-center gap-2 font-sans text-[0.85rem] text-foreground/70 transition-colors hover:text-foreground"
+                >
+                  <span>View All ({PROPERTIES.length})</span>
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    strokeWidth={1.4}
+                  />
+                </Link>
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
 
           {results.length > 0 ? (
-            <div
-              className={`mt-9 grid ${mobileCols === 2 ? "grid-cols-2 gap-3" : "grid-cols-1 gap-7"} sm:grid-cols-2 sm:gap-8 lg:grid-cols-3`}
-            >
-              {results.slice(0, 6).map((property) => (
-                <PropertyCard key={property.slug} property={property} />
-              ))}
-            </div>
+            <RevealOnScroll variant="fade-up" delay={200}>
+              <div
+                className={`mt-9 grid ${mobileCols === 2 ? "grid-cols-2 gap-3" : "grid-cols-1 gap-7"} sm:grid-cols-2 sm:gap-8 lg:grid-cols-3`}
+              >
+                {results.slice(0, 6).map((property) => (
+                  <PropertyCard key={property.slug} property={property} />
+                ))}
+              </div>
+            </RevealOnScroll>
           ) : (
             <div className="mt-10 border border-border px-6 py-12 text-center font-serif text-lg text-foreground/60">
               No properties match this search filter. Try clearing your filters or selecting a
@@ -226,114 +243,120 @@ export function Index() {
         {/* Lifestyle Collections Section */}
         <section className="border-t border-border bg-panel py-20">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-            <div className="text-center max-w-xl mx-auto">
-              <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
-                Explore by Environment
-              </span>
-              <h2 className="mt-2 font-serif text-3xl font-light text-foreground sm:text-4xl">
-                Homes Tailored to Your Setting
-              </h2>
-            </div>
+            <RevealOnScroll variant="fade-up" delay={100}>
+              <div className="text-center max-w-xl mx-auto">
+                <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45">
+                  Explore by Environment
+                </span>
+                <h2 className="mt-2 font-serif text-3xl font-light text-foreground sm:text-4xl">
+                  Homes Tailored to Your Setting
+                </h2>
+              </div>
+            </RevealOnScroll>
 
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              <Link
-                to="/properties"
-                className="group relative overflow-hidden border border-border aspect-[4/5] block"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
-                  alt="Coastal Waterfront"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
-                    Environment
-                  </span>
-                  <h3 className="font-serif text-2xl font-light">Waterfront Compounds</h3>
-                </div>
-              </Link>
+            <RevealOnScroll variant="fade-up" delay={200}>
+              <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <Link
+                  to="/properties"
+                  className="group relative overflow-hidden border border-border aspect-[4/5] block"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
+                    alt="Coastal Waterfront"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
+                  <div className="absolute bottom-6 left-6 text-panel">
+                    <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                      Environment
+                    </span>
+                    <h3 className="font-serif text-2xl font-light">Waterfront Compounds</h3>
+                  </div>
+                </Link>
 
-              <Link
-                to="/properties"
-                className="group relative overflow-hidden border border-border aspect-[4/5] block"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                  alt="Desert Modernism"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
-                    Environment
-                  </span>
-                  <h3 className="font-serif text-2xl font-light">Desert Modernism</h3>
-                </div>
-              </Link>
+                <Link
+                  to="/properties"
+                  className="group relative overflow-hidden border border-border aspect-[4/5] block"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                    alt="Desert Modernism"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
+                  <div className="absolute bottom-6 left-6 text-panel">
+                    <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                      Environment
+                    </span>
+                    <h3 className="font-serif text-2xl font-light">Desert Modernism</h3>
+                  </div>
+                </Link>
 
-              <Link
-                to="/properties"
-                className="group relative overflow-hidden border border-border aspect-[4/5] block"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"
-                  alt="Alpine Retreats"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
-                    Environment
-                  </span>
-                  <h3 className="font-serif text-2xl font-light">Alpine Retreats</h3>
-                </div>
-              </Link>
+                <Link
+                  to="/properties"
+                  className="group relative overflow-hidden border border-border aspect-[4/5] block"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"
+                    alt="Alpine Retreats"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
+                  <div className="absolute bottom-6 left-6 text-panel">
+                    <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                      Environment
+                    </span>
+                    <h3 className="font-serif text-2xl font-light">Alpine Retreats</h3>
+                  </div>
+                </Link>
 
-              <Link
-                to="/properties"
-                className="group relative overflow-hidden border border-border aspect-[4/5] block"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
-                  alt="Urban Penthouses"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
-                <div className="absolute bottom-6 left-6 text-panel">
-                  <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
-                    Environment
-                  </span>
-                  <h3 className="font-serif text-2xl font-light">Sky Penthouses</h3>
-                </div>
-              </Link>
-            </div>
+                <Link
+                  to="/properties"
+                  className="group relative overflow-hidden border border-border aspect-[4/5] block"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+                    alt="Urban Penthouses"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
+                  <div className="absolute bottom-6 left-6 text-panel">
+                    <span className="text-[0.68rem] uppercase tracking-widest text-panel/75">
+                      Environment
+                    </span>
+                    <h3 className="font-serif text-2xl font-light">Sky Penthouses</h3>
+                  </div>
+                </Link>
+              </div>
+            </RevealOnScroll>
           </div>
         </section>
 
         {/* Sell Your Property CTA */}
         <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8">
-          <div className="border border-border bg-panel p-10 sm:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-xl">
-              <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45 font-semibold">
-                Homestead Valuation Studio
-              </span>
-              <h2 className="mt-2 font-serif text-3xl font-light text-foreground sm:text-4xl">
-                Considering Selling Your Property?
-              </h2>
-              <p className="mt-3 font-serif text-base text-foreground/75 leading-relaxed">
-                Our advisors provide confidential architectural valuations, off-market
-                introductions, and global collector outreach.
-              </p>
-            </div>
+          <RevealOnScroll variant="fade-up" delay={100}>
+            <div className="border border-border bg-panel p-10 sm:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="max-w-xl">
+                <span className="font-sans text-[0.72rem] uppercase tracking-[0.2em] text-foreground/45 font-semibold">
+                  Homestead Valuation Studio
+                </span>
+                <h2 className="mt-2 font-serif text-3xl font-light text-foreground sm:text-4xl">
+                  Considering Selling Your Property?
+                </h2>
+                <p className="mt-3 font-serif text-base text-foreground/75 leading-relaxed">
+                  Our advisors provide confidential architectural valuations, off-market
+                  introductions, and global collector outreach.
+                </p>
+              </div>
 
-            <Link
-              to="/valuation"
-              className="bg-primary px-8 py-4 font-sans text-xs uppercase tracking-wider text-primary-foreground hover:opacity-90 transition-opacity shrink-0"
-            >
-              Request Home Valuation
-            </Link>
-          </div>
+              <Link
+                to="/valuation"
+                className="bg-primary px-8 py-4 font-sans text-xs uppercase tracking-wider text-primary-foreground hover:opacity-90 transition-opacity shrink-0"
+              >
+                Request Home Valuation
+              </Link>
+            </div>
+          </RevealOnScroll>
         </section>
       </main>
 
