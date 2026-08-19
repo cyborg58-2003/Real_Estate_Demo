@@ -197,17 +197,6 @@ Premium.
 Human-designed.
 
 The final website should look like a $20,000–$50,000 boutique real estate agency website created by an award-winning art director and digital designer, rather than a template or AI-generated landing page.
-recreate the reference image , and project structure should be clean
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/4c4441d8-1439-4b80-8f7b-8674a3df8e35).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
